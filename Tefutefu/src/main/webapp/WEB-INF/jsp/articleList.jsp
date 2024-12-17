@@ -38,6 +38,14 @@
 		<!-- 日時を指定のフォーマットで表示するための命令 -->
 		<%SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");%>
 		<label>登録日時：<br><%=sdf.format( a.getEntryDatetime() )%></label>
+		<td>${article.like}</td>
+                <td>
+                    <!-- いいねボタン：サーブレットに記事IDを送信 -->
+                    <form action="ArticleListServlet" method="get">
+                        <input type="hidden" name="like" value="${article.id}">
+                        <button type="submit">いいね</button>
+                    </form>
+                </td>
 		<br>
 		<br>
 	<%} %>

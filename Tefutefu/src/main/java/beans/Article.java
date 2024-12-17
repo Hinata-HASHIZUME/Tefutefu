@@ -10,6 +10,7 @@ public class Article implements Serializable{ //implements Serializableが必要
 	private String body; //本文
 	private String editorId; //著者のユーザId
 	private Timestamp entryDatetime; //登録日時
+	private int like; //いいね
 
 	//カラのコンストラクタが必要
 	public Article() {
@@ -22,6 +23,7 @@ public class Article implements Serializable{ //implements Serializableが必要
 		this.body = body;
 		this.editorId = editorId;
 		this.entryDatetime = entryDatetime;
+		this.like = 0;
 	}
 
 	//idと登録日時が確定していない場合用のコンストラクタ
@@ -67,6 +69,12 @@ public class Article implements Serializable{ //implements Serializableが必要
 
 	public void setEntryDatetime(Timestamp entryDatetime) {
 		this.entryDatetime = entryDatetime;
+	}
+	public int getLike() {
+		return this.like;
+	}
+	public void setLike(int like) {
+		this.like = like;
 	}
 
 }

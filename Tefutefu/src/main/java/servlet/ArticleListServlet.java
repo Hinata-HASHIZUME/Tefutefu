@@ -32,6 +32,14 @@ public class ArticleListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//DBアクセスのためのクラスをインスタンス化
 		Dao dao = new Dao();
+		
+		// "like" パラメータが存在する場合（いいねボタンが押されたとき）
+	    String likeParam = request.getParameter("like");
+	    if (likeParam != null) {
+	        int articleId = Integer.parseInt(likeParam);
+	        dao.updateLike(articleId); // いいねを1増やす
+	    }
+	    
 		//すべての記事のリストを取得．Article(記事)クラスはbeansパッケージに宣言してある．
 		List<Article> articleList = dao.getArticleList();
 
